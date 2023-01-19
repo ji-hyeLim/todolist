@@ -1,0 +1,42 @@
+.TodoInsert {
+    display: flex;
+    // background-color: #eee;
+
+    input {
+        outline: none;
+        border: none;
+        padding: 0.5rem;
+        padding-left: 1rem;
+        font-family: inherit;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        // color: white;
+        background: none;
+        &::placeholder {
+            color: #b1b1b1;
+        }
+        flex: 1; // 전 영역을 전부 차지함
+    }
+
+    button { // 버튼 초기화 (위로 올려놓음)
+        outline: none;
+        border: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        color: #ccc;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.2s background-color ease-in;
+        
+        &:hover {
+            svg {
+                color: #f9dce1;
+                transition: 0.3s;
+            }
+        }
+    }
+}

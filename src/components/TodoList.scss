@@ -1,0 +1,8 @@
+.TodoList {
+    width: 512px;
+    height: 513px;
+    min-height: 320px;  
+    max-height: 513px;
+    overflow-y: auto; //  리스트를 계속 넣을때 스크롤 생기게 해줌
+    
+}
