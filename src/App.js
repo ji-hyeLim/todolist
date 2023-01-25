@@ -4,6 +4,7 @@ import TodoChange from './components/TodoChange';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 import TodoTemplate from './components/TodoTemplate';
+import { Calender } from './components/Calender';
 
 
 function App() {
@@ -79,9 +80,43 @@ function App() {
     },
     [onInsertToggle],
   );
+
+  // 날짜
+  // const Content = () => {
+  //   const [value, setValue] = useState(new Date());
+  
+  //   console.log(value.getDate(), value.getMonth() + 1);
+  //   return (
+  //     <Grid container spacing={2}>
+  //       <Grid item xs={12} md={6}>
+  //         <Item>
+  //           <DatePicker
+  //             selected={value}
+  //             onChange={(date) => setValue(date)}
+  //             inline
+  //           />
+  //         </Item>
+  //       </Grid>
+  //       <Grid item xs={12} md={6}>
+  //         <Item sx={{ display: "flex", flexDirection: "column" }}>
+  //           <TodoProvider>
+  //             <TodoHead value={value}/>
+  //             <TodoLists/>
+  //           </TodoProvider>
+  //         </Item>
+  //       </Grid>
+  //     </Grid>
+  //   );
+  // };
         
   return (
-    <div>
+    <div className='flex_box'>
+      <Calender 
+      // onchildren={children}
+      // selected={value}
+      // onChange={(date) => setValue(date)}
+      // inline 
+      />
       <TodoTemplate>
         <TodoInsert onInsert={onInsert} />
         <TodoList 

@@ -1,9 +1,9 @@
+@import './style.scss';
+
 .TodoListItem-virtualized { // 가상에 들어옴
+    border-top: 3px solid $main-color;
     & + & {
         border-top: 1px solid #dee2e6;
-    }
-    &:nth-child(odd) {
-        background-color: #f8f9fa;
     }
 }
 
@@ -12,9 +12,6 @@
     align-items: center;
     padding: 1rem;
     font-size: 1.3rem;
-    &:nth-child(even) {
-        background-color: #f8f9fa;
-    }
 
     .checkbox {
         display: flex;
@@ -34,7 +31,7 @@
         // checked
         &.checked {
             svg {
-                color: #58d7da;
+                color: $point-color;
             }
 
             .text {
@@ -48,10 +45,12 @@
         display: flex;
         align-items: center;
         font-size: 1.5rem;
-        color: #ff6b6b;
+        color: $import-color;
         cursor: pointer;
         &:hover {
-            color: #ff8787;
+            transform: scale(1.2);
+            color: $point-color;
+            transition: 0.1s;
         }
     }
 
@@ -61,5 +60,11 @@
         font-size: 1.5rem;
         cursor: pointer;
         margin-right: 1rem;
+
+        &:hover {
+            transform: scale(1.2);
+            color: $point-color;
+            transition: 0.1s;
+        }
     }
 }

@@ -6,11 +6,15 @@
 }
 
 body {
-  /* margin: 0 auto; */
-  background-color: rgb(250, 243, 233);
   font-family: 'GangwonEduSaeeum_OTFMediumA';
+  background-color: rgb(250, 243, 233);
 }
 
+.flex_box {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
 /* code {
   source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

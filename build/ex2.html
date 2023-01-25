@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>$.ajax() 메서드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h1,
+        h2 {
+            font-family: "맑은 고딕";
+            font-size: 14px;
+            margin-bottom: 10px;
+        }      
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #ff6600;
+        }
+        #wrap {
+            width: 204px;
+            margin: 20px auto;
+            text-align: center;            
+        }
+        #vis {
+            width: 204px;
+            height: 280px;
+            overflow: hidden;
+        }
+        #vis .subject {
+            width: 860px;
+            text-align: center;
+            overflow: hidden
+        }
+        #vis .subject > div {            
+            border: 2px solid #ff6600;
+            float: left;            
+            border-radius: 10px;
+            padding: 10px 0;
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+    <script>
+        // 여기에 ajax 코드 작성
+        $.ajax({
+            type: 'GET',
+            url: "./data/data2.json",
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                let element;
+                for(let i in data) {
+                    element += `<div>`;
+                    element +=`<h2>${data[i].item}</h2>`;
+                    element +=`<div><img src=./images/${data[i].imgfile} alt=${data[i].item}></div>`;
+                    element +=`<div><a href=${data[i].link} target=_blank>상세정보</a></div>`;
+                    element += `</div>`;
+                };
+                $(".subject").append(element);
+            },
+            error: function(err) {
+                $("#wrap").text("데이터 로딩 실패!");
+            }
+        });
+
+        $(document).ready(function() {
+            var roll;
+            function play() {
+                roll = setInterval(function() {
+                    $(".subject > div:first").insertAfter($(".subject > div:last"));
+                }, 2000);
+            }
+            function stop() {
+                clearInterval(roll);
+            }
+            $("#vis").hover(function() {
+                stop();
+            }, function() {
+                play();
+            });
+            play();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>웹 교과목</h1>
+        <div id="vis">
+            <div class="subject">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
