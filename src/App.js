@@ -44,7 +44,7 @@ function App() {
 
   // 항목 추가
   const onInsert = useCallback(
-    (text) => { // text는 value값
+    (text) => {
       const todo = {
         id: nextId.current,
         text,
@@ -55,10 +55,14 @@ function App() {
     }, []);
 
   // 항목 지우기
-  const onRemove = useCallback(
-    id => {
-      setTodos((todos) => todos.filter((todo) => todo.id !== id));
-    }, []);
+  const onRemove = useCallback( id => {
+    if (window.confirm("정말 삭제합니까?")) {
+        setTodos((todos) => todos.filter((todo) => todo.id !== id));
+        alert("삭제되었습니다.");
+    } else {
+      alert("취소합니다.");
+    }
+  }, []);
 
     
   // 체크기능
@@ -81,42 +85,22 @@ function App() {
     [onInsertToggle],
   );
 
-  // 날짜
-  // const Content = () => {
-  //   const [value, setValue] = useState(new Date());
-  
-  //   console.log(value.getDate(), value.getMonth() + 1);
-  //   return (
-  //     <Grid container spacing={2}>
-  //       <Grid item xs={12} md={6}>
-  //         <Item>
-  //           <DatePicker
-  //             selected={value}
-  //             onChange={(date) => setValue(date)}
-  //             inline
-  //           />
-  //         </Item>
-  //       </Grid>
-  //       <Grid item xs={12} md={6}>
-  //         <Item sx={{ display: "flex", flexDirection: "column" }}>
-  //           <TodoProvider>
-  //             <TodoHead value={value}/>
-  //             <TodoLists/>
-  //           </TodoProvider>
-  //         </Item>
-  //       </Grid>
-  //     </Grid>
-  //   );
-  // };
+  // 개수 세기
+  // const todoCount = new TodoCount({
+  //   selectedTodoItems: selectedTodoItems => {
+  //     todoList.setState(selectedTodoItems)
+  //   }
+  // })
+
+  // this.init = () => {
+  //   todoCount.init()
+  //   todoCount.setState(this.todoItems)
+  //   todoList.setState(this.todoItems)
+  // }
         
   return (
     <div className='flex_box'>
-      <Calender 
-      // onchildren={children}
-      // selected={value}
-      // onChange={(date) => setValue(date)}
-      // inline 
-      />
+      <Calender />
       <TodoTemplate>
         <TodoInsert onInsert={onInsert} />
         <TodoList 

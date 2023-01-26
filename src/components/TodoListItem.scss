@@ -1,6 +1,6 @@
 @import './style.scss';
 
-.TodoListItem-virtualized { // 가상에 들어옴
+.TodoListItem-virtualized {
     border-top: 3px solid $main-color;
     & + & {
         border-top: 1px solid #dee2e6;
